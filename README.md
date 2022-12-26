@@ -8,6 +8,7 @@ Python을 사용하여 통신, 데이터베이스 저장, 카메라, 센싱 컨�
 </br>
 </br>
 ### 사용 API
+
 * openCV
 * Thread
 * MQTT
