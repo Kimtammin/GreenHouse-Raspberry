@@ -7,7 +7,8 @@ Python을 사용하여 통신, 데이터베이스 저장, 카메라, 센싱 컨�
 
 </br>
 </br>
-### 사용 API
+
+# 사용 API
 
 * openCV
 * Thread
@@ -18,12 +19,18 @@ Python을 사용하여 통신, 데이터베이스 저장, 카메라, 센싱 컨�
 * adafruit_dht
 * spidev
 * RPi_I2C_driver
+</br>
+</br>
 
-### flowChart
+# flowChart
+
 ![Raspberry_flow_chart_last](https://user-images.githubusercontent.com/98437996/209539156-8ae10f60-0c4a-4ebb-b152-234e1697ebc6.png)
 
+</br>
+</br>
 
 # 설명
+
 기본적으로 2개의 서브 쓰레드와 메인 루프가 존재합니다.</br>
 main loop의 경우 mqtt 통신을 위해 지속적으로 메세지가 전달됬는지 확인하기 위한 루프이며</br>
 sensor thread는 정해진 시간마다 온습도, 토양수분, 현재 시간 등을 읽어 데이터베이스 저장하고 web에게 publish할지 선택합니다.</br>
@@ -54,7 +61,9 @@ Database(client, host, port,user, password, database)</br>
 </br>
 </br>
 </br>
+
 # Camera Class
+
 Camera(client, 비디오 번호)</br>
 * 클라이언트와 raspberry PI에 연결된 카메라 번호를 넣어 초기화합니다.
 * web에서 카메라 on 버튼을 누르면 서브 쓰레드가 동작하여 이미지를 읽고 저장하고 binary로 읽은 후 전달합니다.
@@ -63,14 +72,18 @@ Camera(client, 비디오 번호)</br>
 </br>
 </br>
 </br>
+
 # Control Class
+
 Control(client, ledpin, coolingpin, waterPin1,waterPin2)</br>
 * 라즈베리파이와 연결된 핀번호를 초기화합니다.
 * 기본으로는 web에서 제어하며 밤 시간의 경우에는 스스로 판단하여 작동하도록 되어있습니다.
 </br>
 </br>
 </br>
+
 # Main
+
 1. mqtt broker 연결
 2. sensor, database, control, cctv 인스턴스 생성 및 초기화
 3. thread 객체 생성
@@ -79,7 +92,9 @@ Control(client, ledpin, coolingpin, waterPin1,waterPin2)</br>
 </br>
 </br>
 </br>
+
 # 시각화
+
 라즈베리파이의 influxdb를 사용하여 grafana와 연동해 실시간 데이터를 시각화 할 수 있습니다.</br>
 데이터베이스를 설정하여 자신에게 맞는 테이블을 설정하여 패널을 만들어 주세요.</br>
 ![grafana_img2 PNG](https://user-images.githubusercontent.com/98437996/209542232-0ca2ce14-cb35-46dd-b3a7-75c6604ffec7.png)
@@ -87,7 +102,9 @@ Control(client, ledpin, coolingpin, waterPin1,waterPin2)</br>
 </br>
 </br>
 </br>
+
 # 마무리
+
 Raspberry의 경우 사용되는 보드나, 센서에 따라 작동하지 않을 수 있으며 기본적으로 mosquitto broker가 열려있을 때 실행이
 가능합니다.</br>
 각 클래스는 디폴트 값이 존재하며 데이터베이스나 install 되어있지 않은 API가 존재하면 사용하지 않아도 됩니다.</br>
